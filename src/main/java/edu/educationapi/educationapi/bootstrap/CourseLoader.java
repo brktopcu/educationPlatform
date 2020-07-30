@@ -28,6 +28,23 @@ public class CourseLoader implements CommandLineRunner {
                 .courseCategory(CourseCategory.YAZILIM)
                 .build();
 
+        Course c2 = Course.builder()
+                .courseName("Jira Eğitimi")
+                .description("Jira ile çevik proje yönetimini öğrenin")
+                .courseCategory(CourseCategory.YAZILIM)
+                .build();
+
+        Course c3 = Course.builder()
+                .courseName("Satış ve Pazarlama Eğitimi")
+                .description("Satış ve Pazarlamanın Temellerini Öğrenin")
+                .courseCategory(CourseCategory.PAZARLAMA)
+                .build();
+
+
         courseRepository.save(c1);
+        courseRepository.save(c2);
+        courseRepository.save(c3);
+
+        System.out.println("Courses Loaded!");
     }
 }

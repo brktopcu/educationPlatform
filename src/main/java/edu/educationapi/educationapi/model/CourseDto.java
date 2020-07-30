@@ -23,9 +23,10 @@ public class CourseDto {
 
     private CourseCategory courseCategory;
 
+    private byte[] coursePicture;
 
     private Timestamp createdDate;
 
-    private String instructorId;
+    private String userId;
 
 }
