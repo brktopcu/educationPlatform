@@ -6,6 +6,7 @@ import edu.educationapi.educationapi.mappers.CourseMapper;
 import edu.educationapi.educationapi.model.CourseDto;
 import edu.educationapi.educationapi.repositories.CourseRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,13 +19,9 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public CourseDto getById(Long courseId) {
-        return CourseDto.builder()
-                .courseId(courseId)
-                .courseName("Java Spring Boot Eğitimi")
-                .description("Java kullanarak Spring Boot öğrenin")
-                .courseCategory(CourseCategory.YAZILIM)
-                .build();
+    public CourseDto getById(Long courseId) throws ChangeSetPersister.NotFoundException {
+        return courseMapper.courseToCourseDto(courseRepository.findById(courseId)
+                .orElseThrow(ChangeSetPersister.NotFoundException::new));
     }
 
     @Override

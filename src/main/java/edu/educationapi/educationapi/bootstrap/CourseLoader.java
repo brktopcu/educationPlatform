@@ -23,10 +23,11 @@ public class CourseLoader implements CommandLineRunner {
 
     private void loadCourses(){
         Course c1 = Course.builder()
-                .courseId((long) 1)
                 .courseName("Java Spring Boot Eğitimi")
                 .description("Java kullanarak Spring Boot öğrenin")
                 .courseCategory(CourseCategory.YAZILIM)
                 .build();
+
+        courseRepository.save(c1);
     }
 }
