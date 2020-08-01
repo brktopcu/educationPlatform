@@ -29,4 +29,10 @@ public class Document {
     @ManyToOne
     //@JoinColumn(name = "course_id")
     private Course course;
+
+    public Document(String name, String type, byte[] data){
+        this.documentName=name;
+        this.documentType=type;
+        this.data=data;
+    }
 }

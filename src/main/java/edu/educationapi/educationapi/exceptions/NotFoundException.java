@@ -1,4 +1,4 @@
-package edu.educationapi.educationapi.controllers;
+package edu.educationapi.educationapi.exceptions;
 
 public class NotFoundException extends RuntimeException {
 }
