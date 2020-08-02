@@ -5,6 +5,7 @@ import edu.educationapi.educationapi.exceptions.FileStorageException;
 import edu.educationapi.educationapi.exceptions.NotFoundException;
 import edu.educationapi.educationapi.properties.FileStorageProperties;
 import edu.educationapi.educationapi.repositories.DocumentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -17,17 +18,17 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 @Service
+@RequiredArgsConstructor
 public class FileService {
 
-    @Autowired
-    private DocumentRepository documentRepository;
+    private final DocumentRepository documentRepository;
 
     public Document storeFile(MultipartFile file) {
-        // Normalize file name
+
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
-            // Check if the file's name contains invalid characters
+
             if (fileName.contains("..")) {
                 throw new FileStorageException();
             }
