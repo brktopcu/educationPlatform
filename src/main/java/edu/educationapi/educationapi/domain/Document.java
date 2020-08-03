@@ -27,7 +27,6 @@ public class Document {
 
     //TODO Fix and test hibernate relationship
     @ManyToOne
-    //@JoinColumn(name = "course_id")
     private Course course;
 
     public Document(String name, String type, byte[] data){

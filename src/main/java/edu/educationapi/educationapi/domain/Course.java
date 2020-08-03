@@ -22,7 +22,7 @@ public class Course {
 
     private String courseName;
 
-    private String description;
+    private String courseDescription;
 
     private CourseCategory courseCategory;
 
@@ -32,7 +32,7 @@ public class Course {
     @Column(updatable = false)
     private Timestamp createdDate;
 
-    private String userId;
+    //private String userId;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     private List<Document> documentList;
