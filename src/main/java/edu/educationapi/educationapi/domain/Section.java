@@ -1,5 +1,7 @@
 package edu.educationapi.educationapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +26,11 @@ public class Section {
 
     private String sectionDescription;
 
+    @JsonBackReference
     @ManyToOne
     private Course course;
 
+    @JsonManagedReference
     @OneToMany
     private List<Document> documentList;
 

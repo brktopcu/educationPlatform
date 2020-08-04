@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,8 +24,8 @@ public class User {
 
     private String email;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "userList")
     private List<Course> courseList;
 
-    //TODO entity relationships with Hibernate
 }

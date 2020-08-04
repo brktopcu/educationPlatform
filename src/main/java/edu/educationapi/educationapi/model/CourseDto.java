@@ -1,12 +1,14 @@
 package edu.educationapi.educationapi.model;
 
 import edu.educationapi.educationapi.domain.CourseCategory;
+import edu.educationapi.educationapi.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +21,7 @@ public class CourseDto {
 
     private String courseName;
 
-    private String description;
+    private String courseDescription;
 
     private CourseCategory courseCategory;
 
@@ -27,6 +29,7 @@ public class CourseDto {
 
     private Timestamp createdDate;
 
-    private String userId;
+    private List<User> userList;
+    //TODO fix mapping
 
 }

@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -32,6 +33,7 @@ public class Course {
     @Column(updatable = false)
     private Timestamp createdDate;
 
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(
             name = "user_course",
@@ -40,6 +42,7 @@ public class Course {
     )
     private List<User> userList;
 
+    @JsonManagedReference
     @OneToMany
     private List<Section> sectionList;
 }
