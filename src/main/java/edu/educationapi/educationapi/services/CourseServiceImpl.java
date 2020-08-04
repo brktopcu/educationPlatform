@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
@@ -23,6 +26,18 @@ public class CourseServiceImpl implements CourseService {
         return courseMapper.courseToCourseDto(courseRepository.findById(courseId)
                 .orElseThrow(ChangeSetPersister.NotFoundException::new));
     }
+
+    @Override
+    public List<CourseDto> getAllCourses() {
+        List<CourseDto> courses = new ArrayList<>();
+        courseRepository.findAll().forEach(
+                course -> {
+                    courses.add(courseMapper.courseToCourseDto(course));
+                }
+        );
+        return courses;
+    }
+
 
     @Override
     public CourseDto savedNewCourse(CourseDto courseDto) {

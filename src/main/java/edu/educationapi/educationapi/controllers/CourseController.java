@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/courses")
@@ -19,6 +21,12 @@ public class CourseController {
     public ResponseEntity<CourseDto> getCourseById(@PathVariable("courseId") Long courseId) throws ChangeSetPersister.NotFoundException {
 
         return new ResponseEntity<>(courseService.getById(courseId), HttpStatus.OK);
+
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<CourseDto>> getAllCourses(){
+        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
 
     }
 
