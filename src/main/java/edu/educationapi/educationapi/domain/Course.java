@@ -32,8 +32,14 @@ public class Course {
     @Column(updatable = false)
     private Timestamp createdDate;
 
-    //private String userId;
+    @ManyToMany
+    @JoinTable(
+            name = "user_course",
+            joinColumns = { @JoinColumn(name = "courseId") },
+            inverseJoinColumns = { @JoinColumn(name = "userId") }
+    )
+    private List<User> userList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
-    private List<Document> documentList;
+    @OneToMany
+    private List<Section> sectionList;
 }

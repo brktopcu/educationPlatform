@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,5 +24,10 @@ public class Section {
 
     private String sectionDescription;
 
-    //TODO entity relationships with Hibernate
+    @ManyToOne
+    private Course course;
+
+    @OneToMany
+    private List<Document> documentList;
+
 }

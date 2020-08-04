@@ -1,20 +1,16 @@
 package edu.educationapi.educationapi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
 
     @Id
@@ -26,6 +22,9 @@ public class User {
     private String userPassword;
 
     private String email;
+
+    @ManyToMany(mappedBy = "userList")
+    private List<Course> courseList;
 
     //TODO entity relationships with Hibernate
 }

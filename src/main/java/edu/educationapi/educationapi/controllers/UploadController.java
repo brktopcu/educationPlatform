@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.controllers;
 
+import edu.educationapi.educationapi.domain.Section;
 import edu.educationapi.educationapi.services.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,9 @@ public class UploadController {
     private final FileService fileStorageService;
 
     @PostMapping("/uploadFile")
-    public Response uploadFile(@RequestParam("file") MultipartFile file) {
-        String fileName = fileStorageService.storeFile(file).getDocumentName();
+    public Response uploadFile(@RequestParam("file") MultipartFile file,
+                               @RequestParam("section") Section section) {
+        String fileName = fileStorageService.storeFile(file, section).getDocumentName();
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")

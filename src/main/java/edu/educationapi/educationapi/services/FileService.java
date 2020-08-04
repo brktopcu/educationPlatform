@@ -1,6 +1,7 @@
 package edu.educationapi.educationapi.services;
 
 import edu.educationapi.educationapi.domain.Document;
+import edu.educationapi.educationapi.domain.Section;
 import edu.educationapi.educationapi.exceptions.FileStorageException;
 import edu.educationapi.educationapi.exceptions.NotFoundException;
 import edu.educationapi.educationapi.properties.FileStorageProperties;
@@ -23,7 +24,7 @@ public class FileService {
 
     private final DocumentRepository documentRepository;
 
-    public Document storeFile(MultipartFile file) {
+    public Document storeFile(MultipartFile file, Section section) {
 
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -34,6 +35,7 @@ public class FileService {
             }
 
             Document dbFile = new Document(fileName, file.getContentType(), file.getBytes());
+            dbFile.setSection(section);
 
             return documentRepository.save(dbFile);
         } catch (IOException ex) {

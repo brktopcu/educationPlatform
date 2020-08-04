@@ -25,9 +25,8 @@ public class Document {
     @Lob
     private byte[] data;
 
-    //TODO Fix and test hibernate relationship
     @ManyToOne
-    private Course course;
+    private Section section;
 
     public Document(String name, String type, byte[] data){
         this.documentName=name;
