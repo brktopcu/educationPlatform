@@ -5,7 +5,6 @@ import edu.educationapi.educationapi.domain.CourseCategory;
 import edu.educationapi.educationapi.domain.User;
 import edu.educationapi.educationapi.repositories.CourseRepository;
 import edu.educationapi.educationapi.repositories.UserRepository;
-import edu.educationapi.educationapi.services.ImgToByteArray;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -31,7 +30,7 @@ public class CourseLoader implements CommandLineRunner {
         }
     }
 
-    private void loadCourses() throws IOException {
+    private void loadCourses() {
 
 
         Course c1 = Course.builder()
