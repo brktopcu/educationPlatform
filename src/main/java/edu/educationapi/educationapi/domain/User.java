@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,7 +26,7 @@ public class User {
     private String email;
 
     @JsonBackReference
-    @ManyToMany(mappedBy = "userList")
-    private List<Course> courseList;
+    @ManyToMany(mappedBy = "users")
+    private List<Course> courses;
 
 }

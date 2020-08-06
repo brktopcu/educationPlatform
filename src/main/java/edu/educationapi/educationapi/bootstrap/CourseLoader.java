@@ -25,10 +25,6 @@ public class CourseLoader implements CommandLineRunner {
     InputStream in3 = CourseLoader.class.getResourceAsStream("/pictures/jira.png");
     InputStream in4 = CourseLoader.class.getResourceAsStream("/pictures/sales.png");
 
-    List<User> userList1 = new ArrayList<>();
-    List<User> userList2 = new ArrayList<>();
-
-
     @Override
     public void run(String... args) throws Exception {
         if(courseRepository.count() == 0){
@@ -37,20 +33,6 @@ public class CourseLoader implements CommandLineRunner {
     }
 
     private void loadCourses() throws IOException {
-
-        User u1 = User.builder()
-                .userName("user1")
-                .build();
-        User u2 = User.builder()
-                .userName("user2")
-                .build();
-
-        userList1.add(u1);
-        userList1.add(u2);
-        userList2.add(u1);
-
-        userRepository.save(u1);
-        userRepository.save(u2);
 
         CourseCategory cat1 = CourseCategory.builder().courseCategoryName("Yazılım").build();
         CourseCategory cat2 = CourseCategory.builder().courseCategoryName("Pazarlama").build();
@@ -80,9 +62,38 @@ public class CourseLoader implements CommandLineRunner {
                 .courseCategory(cat2)
                 .build();
 
+       // u1.setCourses(new ArrayList<>());
+      //  u1.getCourses().add(c1);
+      //  u1.getCourses().add(c2);
+      //  u2.setCourses(new ArrayList<>());
+       // u2.getCourses().add(c1);
+
+       // c1.setUsers(new ArrayList<>());
+       // c1.getUsers().add(u1);
+       // c1.getUsers().add(u2);
+       // c2.setUsers(new ArrayList<>());
+       // c2.getUsers().add(u1);
+
         courseRepository.save(c1);
         courseRepository.save(c2);
         courseRepository.save(c3);
+
+        User u1 = User.builder()
+                .userName("user1")
+                .courses(new ArrayList<>())
+                .build();
+        User u2 = User.builder()
+                .userName("user2")
+                .courses(new ArrayList<>())
+                .build();
+
+        u1.getCourses().add(c1);
+        u1.getCourses().add(c2);
+        u2.getCourses().add(c1);
+
+        userRepository.save(u1);
+        userRepository.save(u2);
+
 
         Section s1 = Section.builder().sectionName("Bölüm 1")
                 .sectionDescription("Giriş bölümü")

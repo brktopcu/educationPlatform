@@ -29,10 +29,11 @@ public class Section {
     private Course course;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Document> documentList;
+    @OneToMany(mappedBy = "section",cascade = CascadeType.ALL)
+    private List<Document> documents;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Video video;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
+    private List<Video> videos;
 
 }

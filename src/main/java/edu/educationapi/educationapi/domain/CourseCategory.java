@@ -21,6 +21,6 @@ public class CourseCategory {
     private String courseCategoryName;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "courseCategory" ,cascade = CascadeType.ALL)
     private List<Course> course;
 }

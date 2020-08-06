@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -40,12 +41,12 @@ public class Course {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_course",
-            joinColumns = { @JoinColumn(name = "courseId") },
+           joinColumns = { @JoinColumn(name = "courseId") },
             inverseJoinColumns = { @JoinColumn(name = "userId") }
     )
-    private List<User> userList;
+    private List<User> users;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Section> sectionList;
 }

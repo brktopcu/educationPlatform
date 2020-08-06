@@ -1,6 +1,7 @@
 package edu.educationapi.educationapi.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,6 +26,6 @@ public class Video {
     private byte[] videoData;
 
     @JsonBackReference
-    @OneToOne
+    @ManyToOne
     private Section section;
 }
