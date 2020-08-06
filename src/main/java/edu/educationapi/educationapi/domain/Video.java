@@ -11,26 +11,20 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Document {
+public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long documentId;
+    private Long videoId;
 
-    private String documentName;
+    private String videoName;
 
-    private String documentType;
+    private String videoType;
 
     @Lob
-    private byte[] data;
+    private byte[] videoData;
 
     @JsonBackReference
-    @ManyToOne
+    @OneToOne
     private Section section;
-
-    public Document(String name, String type, byte[] data){
-        this.documentName=name;
-        this.documentType=type;
-        this.data=data;
-    }
 }

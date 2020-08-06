@@ -1,6 +1,26 @@
 package edu.educationapi.educationapi.domain;
 
-public enum CourseCategory {
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
-    YAZILIM, TASARIM, PAZARLAMA, KISISEL_GELISIM
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class CourseCategory {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long courseCategoryId;
+
+    private String courseCategoryName;
+
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Course> course;
 }

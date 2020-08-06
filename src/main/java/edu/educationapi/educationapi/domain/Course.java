@@ -1,14 +1,14 @@
 package edu.educationapi.educationapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Getter
@@ -25,16 +25,19 @@ public class Course {
 
     private String courseDescription;
 
-    private CourseCategory courseCategory;
-
+    @Lob
     private byte[] coursePicture;
+
+    @JsonBackReference
+    @ManyToOne
+    private CourseCategory courseCategory;
 
     @CreationTimestamp
     @Column(updatable = false)
     private Timestamp createdDate;
 
     @JsonManagedReference
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_course",
             joinColumns = { @JoinColumn(name = "courseId") },
@@ -43,6 +46,6 @@ public class Course {
     private List<User> userList;
 
     @JsonManagedReference
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Section> sectionList;
 }
