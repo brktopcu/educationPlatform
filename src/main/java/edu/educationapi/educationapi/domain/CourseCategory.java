@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -20,7 +21,7 @@ public class CourseCategory {
 
     private String courseCategoryName;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(mappedBy = "courseCategory" ,cascade = CascadeType.ALL)
     private List<Course> course;
 }

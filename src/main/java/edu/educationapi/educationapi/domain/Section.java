@@ -24,8 +24,9 @@ public class Section {
 
     private String sectionDescription;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
+    @JoinColumn(name ="course_id")
     private Course course;
 
     @JsonManagedReference

@@ -68,18 +68,24 @@ public class CourseLoader implements CommandLineRunner {
 
         User u1 = User.builder()
                 .userName("user1")
+                .email("user1@gmail.com")
+                .userPassword("1234")
                 .build();
         User u2 = User.builder()
                 .userName("user2")
+                .email("user2@gmail.com")
+                .userPassword("1234")
                 .build();
 
         Set<Course> coursesSet1 = new HashSet<>();
         coursesSet1.add(c1);
         coursesSet1.add(c2);
         coursesSet1.add(c3);
+        Set<Course> coursesSet2 = new HashSet<>();
+        coursesSet2.add(c1);
 
         u1.setCourses(coursesSet1);
-        u2.setCourses(coursesSet1);
+        u2.setCourses(coursesSet2);
 
 
         userRepository.save(u1);

@@ -15,8 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class CourseDto {
-
-
+    
     private Long courseId;
 
     private String courseName;
@@ -28,8 +27,5 @@ public class CourseDto {
     private byte[] coursePicture;
 
     private Timestamp createdDate;
-
-    private List<User> userList;
-    //TODO fix mapping
 
 }
