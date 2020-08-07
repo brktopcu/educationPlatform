@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,8 +26,12 @@ public class User {
 
     private String email;
 
-    @JsonBackReference
-    @ManyToMany(mappedBy = "users")
-    private List<Course> courses;
+   @ManyToMany
+   @JoinTable(
+           name = "user_course",
+           joinColumns = { @JoinColumn(name = "userId") },
+           inverseJoinColumns = { @JoinColumn(name = "courseId") }
+   )
+    private Set<Course> courses;
 
 }

@@ -62,34 +62,25 @@ public class CourseLoader implements CommandLineRunner {
                 .courseCategory(cat2)
                 .build();
 
-       // u1.setCourses(new ArrayList<>());
-      //  u1.getCourses().add(c1);
-      //  u1.getCourses().add(c2);
-      //  u2.setCourses(new ArrayList<>());
-       // u2.getCourses().add(c1);
-
-       // c1.setUsers(new ArrayList<>());
-       // c1.getUsers().add(u1);
-       // c1.getUsers().add(u2);
-       // c2.setUsers(new ArrayList<>());
-       // c2.getUsers().add(u1);
-
         courseRepository.save(c1);
         courseRepository.save(c2);
         courseRepository.save(c3);
 
         User u1 = User.builder()
                 .userName("user1")
-                .courses(new ArrayList<>())
                 .build();
         User u2 = User.builder()
                 .userName("user2")
-                .courses(new ArrayList<>())
                 .build();
 
-        u1.getCourses().add(c1);
-        u1.getCourses().add(c2);
-        u2.getCourses().add(c1);
+        Set<Course> coursesSet1 = new HashSet<>();
+        coursesSet1.add(c1);
+        coursesSet1.add(c2);
+        coursesSet1.add(c3);
+
+        u1.setCourses(coursesSet1);
+        u2.setCourses(coursesSet1);
+
 
         userRepository.save(u1);
         userRepository.save(u2);
