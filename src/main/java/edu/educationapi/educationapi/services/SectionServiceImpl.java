@@ -25,7 +25,7 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public List<SectionDto> getAllSessionsByCourseId(Long courseId) {
-        List<Section> sections = new ArrayList<>();
+        List<Section> sections;
         List<SectionDto> sectionDtos = new ArrayList<>();
 
         sections = sectionRepository.findAll();

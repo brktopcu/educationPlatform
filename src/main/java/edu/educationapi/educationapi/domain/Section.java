@@ -29,11 +29,11 @@ public class Section {
     @JoinColumn(name ="course_id")
     private Course course;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(mappedBy = "section",cascade = CascadeType.ALL)
     private List<Document> documents;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
     private List<Video> videos;
 

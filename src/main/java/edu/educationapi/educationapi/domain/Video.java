@@ -25,7 +25,7 @@ public class Video {
     @Lob
     private byte[] videoData;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     private Section section;
 }
