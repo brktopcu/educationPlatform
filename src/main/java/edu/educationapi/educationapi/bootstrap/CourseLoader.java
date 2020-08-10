@@ -6,8 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -19,11 +21,15 @@ public class CourseLoader implements CommandLineRunner {
     private final SectionRepository sectionRepository;
     private final CourseCategoryRepository courseCategoryRepository;
     private final VideoRepository videoRepository;
+    private final DocumentRepository documentRepository;
 
     InputStream in1 = CourseLoader.class.getResourceAsStream("/videos/video-sample.mp4");
     InputStream in2 = CourseLoader.class.getResourceAsStream("/pictures/spring-boot.png");
     InputStream in3 = CourseLoader.class.getResourceAsStream("/pictures/jira.png");
     InputStream in4 = CourseLoader.class.getResourceAsStream("/pictures/sales.png");
+
+    InputStream in5 = CourseLoader.class.getResourceAsStream("/documents/test-doc.pdf");
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -96,8 +102,13 @@ public class CourseLoader implements CommandLineRunner {
                 .sectionDescription("Giriş bölümü")
                 .course(c1)
                 .build();
+        Section s2 = Section.builder().sectionName("Bölüm 2")
+                .sectionDescription("Devam...")
+                .course(c1)
+                .build();
 
         sectionRepository.save(s1);
+        sectionRepository.save(s2);
 
         Video v1 = Video.builder().videoName("Demo video")
                 .videoType("mp4")
@@ -106,6 +117,14 @@ public class CourseLoader implements CommandLineRunner {
                 .build();
 
         videoRepository.save(v1);
+
+        Document d1 = Document.builder().documentName("Test document")
+                .documentType("pdf")
+                //.data(in5.readAllBytes())
+                .section(s1)
+                .build();
+
+        documentRepository.save(d1);
 
 
         System.out.println("Courses Loaded!");

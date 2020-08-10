@@ -41,7 +41,10 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseDto savedNewCourse(CourseDto courseDto) {
-        return null;
+
+        courseRepository.save(courseMapper.courseDtoToCourse(courseDto));
+
+        return courseDto;
     }
 
     @Override
