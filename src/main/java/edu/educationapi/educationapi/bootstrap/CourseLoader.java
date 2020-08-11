@@ -29,6 +29,8 @@ public class CourseLoader implements CommandLineRunner {
     InputStream in4 = CourseLoader.class.getResourceAsStream("/pictures/sales.png");
 
     InputStream in5 = CourseLoader.class.getResourceAsStream("/documents/test-doc.pdf");
+    InputStream in6 = CourseLoader.class.getResourceAsStream("/videos/devstories.mp4");
+
 
 
     @Override
@@ -71,6 +73,9 @@ public class CourseLoader implements CommandLineRunner {
         courseRepository.save(c1);
         courseRepository.save(c2);
         courseRepository.save(c3);
+        in2.close();
+        in3.close();
+        in4.close();
 
         User u1 = User.builder()
                 .userName("user1")
@@ -110,17 +115,25 @@ public class CourseLoader implements CommandLineRunner {
         sectionRepository.save(s1);
         sectionRepository.save(s2);
 
+
         Video v1 = Video.builder().videoName("Demo video")
-                .videoType("mp4")
+                .videoType("video/mp4")
                 .videoData(in1.readAllBytes())
                 .section(s1)
                 .build();
 
+        Video v2 = Video.builder().videoName("Devstories")
+                .videoType("video/mp4")
+                .videoData(in6.readAllBytes())
+                .section(s1)
+                .build();
+
         videoRepository.save(v1);
+        videoRepository.save(v2);
 
         Document d1 = Document.builder().documentName("Test document")
                 .documentType("pdf")
-                //.data(in5.readAllBytes())
+                .data(in5.readAllBytes())
                 .section(s1)
                 .build();
 
