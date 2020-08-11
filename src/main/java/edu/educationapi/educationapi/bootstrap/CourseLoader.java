@@ -125,7 +125,7 @@ public class CourseLoader implements CommandLineRunner {
         Video v2 = Video.builder().videoName("Devstories")
                 .videoType("video/mp4")
                 .videoData(in6.readAllBytes())
-                .section(s1)
+                .section(s2)
                 .build();
 
         videoRepository.save(v1);
