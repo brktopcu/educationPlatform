@@ -3,6 +3,7 @@ package edu.educationapi.educationapi.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Section {
 
     private String sectionName;
 
+    @Type(type = "text")
     private String sectionDescription;
 
     @JsonManagedReference

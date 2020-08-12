@@ -104,11 +104,25 @@ public class CourseLoader implements CommandLineRunner {
 
 
         Section s1 = Section.builder().sectionName("Bölüm 1")
-                .sectionDescription("Giriş bölümü")
+                .sectionDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Etiam egestas nulla id felis tristique, sed auctor ligula maximus. " +
+                        "Maecenas dolor metus, commodo vitae malesuada quis, lacinia at eros. " +
+                        "Aenean ac diam sapien. Integer id pellentesque diam. " +
+                        "Nulla ultricies aliquam fringilla. " +
+                        "Nunc volutpat, tortor ut aliquam efficitur, turpis ante dapibus ipsum, " +
+                        "in ultrices dui nunc sit amet eros. Etiam luctus varius nunc luctus aliquet. " +
+                        "Mauris mi elit, posuere ut felis ut, feugiat tempor mauris.")
                 .course(c1)
                 .build();
         Section s2 = Section.builder().sectionName("Bölüm 2")
-                .sectionDescription("Devam...")
+                .sectionDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Etiam egestas nulla id felis tristique, sed auctor ligula maximus. " +
+                        "Maecenas dolor metus, commodo vitae malesuada quis, lacinia at eros. " +
+                        "Aenean ac diam sapien. Integer id pellentesque diam. " +
+                        "Nulla ultricies aliquam fringilla. " +
+                        "Nunc volutpat, tortor ut aliquam efficitur, turpis ante dapibus ipsum, " +
+                        "in ultrices dui nunc sit amet eros. Etiam luctus varius nunc luctus aliquet. " +
+                        "Mauris mi elit, posuere ut felis ut, feugiat tempor mauris.")
                 .course(c1)
                 .build();
 
@@ -116,15 +130,15 @@ public class CourseLoader implements CommandLineRunner {
         sectionRepository.save(s2);
 
 
-        Video v1 = Video.builder().videoName("Demo video")
+        Video v1 = Video.builder().videoName("Devstories")
                 .videoType("video/mp4")
-                .videoData(in1.readAllBytes())
+                .videoData(in6.readAllBytes())
                 .section(s1)
                 .build();
 
-        Video v2 = Video.builder().videoName("Devstories")
+        Video v2 = Video.builder().videoName("Demo")
                 .videoType("video/mp4")
-                .videoData(in6.readAllBytes())
+                .videoData(in1.readAllBytes())
                 .section(s2)
                 .build();
 
