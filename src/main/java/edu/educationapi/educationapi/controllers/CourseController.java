@@ -1,6 +1,9 @@
 package edu.educationapi.educationapi.controllers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import edu.educationapi.educationapi.mappers.SavedCourseDtoMapper;
 import edu.educationapi.educationapi.model.CourseDto;
+import edu.educationapi.educationapi.model.SavedCourseDto;
 import edu.educationapi.educationapi.services.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -32,14 +35,11 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@RequestBody CourseDto courseDto){
+    public ResponseEntity handlePost(@RequestBody SavedCourseDto savedCourseDto){
 
-        CourseDto savedCourseDto = courseService.savedNewCourse(courseDto);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Location", "/courses/" + savedCourseDto
-                .getCourseId().toString());
+        courseService.savedNewCourse(savedCourseDto);
 
-        return new ResponseEntity(httpHeaders, HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
 

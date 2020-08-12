@@ -3,7 +3,9 @@ package edu.educationapi.educationapi.services;
 import edu.educationapi.educationapi.domain.Course;
 import edu.educationapi.educationapi.domain.CourseCategory;
 import edu.educationapi.educationapi.mappers.CourseMapper;
+import edu.educationapi.educationapi.mappers.SavedCourseDtoMapper;
 import edu.educationapi.educationapi.model.CourseDto;
+import edu.educationapi.educationapi.model.SavedCourseDto;
 import edu.educationapi.educationapi.repositories.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -18,6 +20,7 @@ public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
     private final CourseMapper courseMapper;
+    private final SavedCourseDtoMapper savedCourseDtoMapper;
 
 
 
@@ -40,11 +43,11 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public CourseDto savedNewCourse(CourseDto courseDto) {
+    public SavedCourseDto savedNewCourse(SavedCourseDto savedCourseDto) {
 
-        courseRepository.save(courseMapper.courseDtoToCourse(courseDto));
+        courseRepository.save(savedCourseDtoMapper.savedCourseDtoToCourse(savedCourseDto));
 
-        return courseDto;
+        return savedCourseDto;
     }
 
     @Override
