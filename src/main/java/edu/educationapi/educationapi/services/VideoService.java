@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.services;
 
+import edu.educationapi.educationapi.model.SavedVideoDto;
 import edu.educationapi.educationapi.model.VideoDto;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface VideoService {
 
     List<VideoDto> getVideosBySectionId(Long sectionId);
 
-    VideoDto savedNewVideo(VideoDto videoDto);
+    SavedVideoDto savedNewVideo(SavedVideoDto savedVideoDto);
 
     VideoDto updateVideo(Long videoId, VideoDto videoDto);
 }

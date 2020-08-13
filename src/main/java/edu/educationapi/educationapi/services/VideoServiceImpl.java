@@ -1,7 +1,9 @@
 package edu.educationapi.educationapi.services;
 
 import edu.educationapi.educationapi.domain.Video;
+import edu.educationapi.educationapi.mappers.SavedVideoDtoMapper;
 import edu.educationapi.educationapi.mappers.VideoMapper;
+import edu.educationapi.educationapi.model.SavedVideoDto;
 import edu.educationapi.educationapi.model.VideoDto;
 import edu.educationapi.educationapi.repositories.VideoRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ public class VideoServiceImpl implements VideoService {
 
     private final VideoRepository videoRepository;
     private final VideoMapper videoMapper;
+    private final SavedVideoDtoMapper savedVideoDtoMapper;
 
     @Override
     public VideoDto getById(Long videoId) {
@@ -39,8 +42,10 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public VideoDto savedNewVideo(VideoDto videoDto) {
-        return null;
+    public SavedVideoDto savedNewVideo(SavedVideoDto savedVideoDto) {
+        videoRepository.save(savedVideoDtoMapper.savedVideoDtoToVideo(savedVideoDto));
+
+        return savedVideoDto;
     }
 
     @Override
