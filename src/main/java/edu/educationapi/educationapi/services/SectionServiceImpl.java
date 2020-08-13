@@ -1,7 +1,9 @@
 package edu.educationapi.educationapi.services;
 
 import edu.educationapi.educationapi.domain.Section;
+import edu.educationapi.educationapi.mappers.SavedSectionDtoMapper;
 import edu.educationapi.educationapi.mappers.SectionMapper;
+import edu.educationapi.educationapi.model.SavedSectionDto;
 import edu.educationapi.educationapi.model.SectionDto;
 import edu.educationapi.educationapi.repositories.SectionRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ public class SectionServiceImpl implements SectionService {
 
     private final SectionRepository sectionRepository;
     private final SectionMapper sectionMapper;
+    private final SavedSectionDtoMapper savedSectionDtoMapper;
 
 
     @Override
@@ -39,8 +42,11 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public SectionDto savedNewSession(SectionDto sectionDto) {
-        return null;
+    public SavedSectionDto savedNewSession(SavedSectionDto savedSectionDto) {
+
+        sectionRepository.save(savedSectionDtoMapper.savedSectionDtoToSection(savedSectionDto));
+
+        return savedSectionDto;
     }
 
     @Override

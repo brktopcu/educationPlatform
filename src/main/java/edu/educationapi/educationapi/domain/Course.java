@@ -32,7 +32,7 @@ public class Course {
     @Lob
     private byte[] coursePicture;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
     private CourseCategory courseCategory;
 
@@ -40,7 +40,7 @@ public class Course {
     @Column(updatable = false)
     private Timestamp createdDate;
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Section> sectionList;
 }

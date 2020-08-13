@@ -21,7 +21,7 @@ public class CourseCategory {
 
     private String courseCategoryName;
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "courseCategory" ,cascade = CascadeType.ALL)
     private List<Course> course;
 }

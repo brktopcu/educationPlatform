@@ -26,16 +26,16 @@ public class Section {
     @Type(type = "text")
     private String sectionDescription;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name ="course_id")
     private Course course;
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "section",cascade = CascadeType.ALL)
     private List<Document> documents;
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
     private List<Video> videos;
 

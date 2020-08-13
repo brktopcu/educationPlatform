@@ -25,7 +25,7 @@ public class Document {
     @Lob
     private byte[] data;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
     private Section section;
 

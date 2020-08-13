@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.services;
 
+import edu.educationapi.educationapi.model.SavedSectionDto;
 import edu.educationapi.educationapi.model.SectionDto;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface SectionService {
 
     List<SectionDto> getAllSessionsByCourseId(Long courseId);
 
-    SectionDto savedNewSession(SectionDto sectionDto);
+    SavedSectionDto savedNewSession(SavedSectionDto savedSectionDto);
 
     SectionDto updateSession(Long sessionId, SectionDto sectionDto);
 }

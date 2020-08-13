@@ -26,12 +26,12 @@ public class User {
 
     private String email;
 
-   @ManyToMany
-   @JoinTable(
-           name = "user_course",
-           joinColumns = { @JoinColumn(name = "userId") },
-           inverseJoinColumns = { @JoinColumn(name = "courseId") }
-   )
+    @ManyToMany
+    @JoinTable(
+            name = "user_course",
+            joinColumns = { @JoinColumn(name = "userId") },
+            inverseJoinColumns = { @JoinColumn(name = "courseId") }
+    )
     private Set<Course> courses;
 
 }
