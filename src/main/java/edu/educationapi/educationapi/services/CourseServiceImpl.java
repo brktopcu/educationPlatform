@@ -54,4 +54,9 @@ public class CourseServiceImpl implements CourseService {
     public CourseDto updateCourse(Long courseId, CourseDto courseDto) {
         return null;
     }
+
+    @Override
+    public void deleteByCourseId(Long courseId) {
+        courseRepository.deleteById(courseId);
+    }
 }

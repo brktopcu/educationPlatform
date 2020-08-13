@@ -15,4 +15,6 @@ public interface CourseService {
     SavedCourseDto savedNewCourse(SavedCourseDto courseDto);
 
     CourseDto updateCourse(Long courseId, CourseDto courseDto);
+
+    void deleteByCourseId(Long courseId);
 }
