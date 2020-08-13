@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.educationapi.educationapi.domain.Course;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +19,7 @@ public class SectionDto {
 
     private String sectionDescription;
 
+    @JsonIgnore
     private Course course;
 
 }
