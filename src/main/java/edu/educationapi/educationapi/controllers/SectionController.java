@@ -3,6 +3,7 @@ package edu.educationapi.educationapi.controllers;
 import edu.educationapi.educationapi.model.SavedCourseDto;
 import edu.educationapi.educationapi.model.SavedSectionDto;
 import edu.educationapi.educationapi.model.SectionDto;
+import edu.educationapi.educationapi.model.SectionDtoWCourse;
 import edu.educationapi.educationapi.services.SectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class SectionController {
     }
 
     @GetMapping("/getSection/{sectionName}/{sectionDescription}")
-    public ResponseEntity<SectionDto> getSectionsByNameAndDesc(
+    public ResponseEntity<SectionDtoWCourse> getSectionsByNameAndDesc(
             @PathVariable("sectionName") String sectionName,
             @PathVariable("sectionDescription") String sectionDescription){
 

@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import edu.educationapi.educationapi.domain.CourseCategory;
@@ -26,6 +27,7 @@ public class CourseDto {
 
     private String courseDescription;
 
+    @JsonIgnore
     private CourseCategory courseCategory;
 
     private byte[] coursePicture;

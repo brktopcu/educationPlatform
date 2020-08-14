@@ -2,6 +2,7 @@ package edu.educationapi.educationapi.services;
 
 import edu.educationapi.educationapi.model.SavedSectionDto;
 import edu.educationapi.educationapi.model.SectionDto;
+import edu.educationapi.educationapi.model.SectionDtoWCourse;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface SectionService {
 
     SectionDto updateSession(Long sessionId, SectionDto sectionDto);
 
-    SectionDto findBySectionNameAndDescription(String sectionName, String sectionDescription);
+    SectionDtoWCourse findBySectionNameAndDescription(String sectionName, String sectionDescription);
 }

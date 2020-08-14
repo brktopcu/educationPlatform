@@ -2,9 +2,11 @@ package edu.educationapi.educationapi.services;
 
 import edu.educationapi.educationapi.domain.Section;
 import edu.educationapi.educationapi.mappers.SavedSectionDtoMapper;
+import edu.educationapi.educationapi.mappers.SectionDtoWCourseMapper;
 import edu.educationapi.educationapi.mappers.SectionMapper;
 import edu.educationapi.educationapi.model.SavedSectionDto;
 import edu.educationapi.educationapi.model.SectionDto;
+import edu.educationapi.educationapi.model.SectionDtoWCourse;
 import edu.educationapi.educationapi.repositories.SectionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class SectionServiceImpl implements SectionService {
     private final SectionRepository sectionRepository;
     private final SectionMapper sectionMapper;
     private final SavedSectionDtoMapper savedSectionDtoMapper;
+    private final SectionDtoWCourseMapper sectionDtoWCourseMapper;
 
 
     @Override
@@ -55,8 +58,8 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public SectionDto findBySectionNameAndDescription(String sectionName, String sectionDescription) {
-        return sectionMapper.sectionToSectionDto(sectionRepository
+    public SectionDtoWCourse findBySectionNameAndDescription(String sectionName, String sectionDescription) {
+        return sectionDtoWCourseMapper.sectionToSectionDtoWCourse(sectionRepository
                 .findFirstBySectionNameAndAndSectionDescription(sectionName,sectionDescription));
     }
 }
