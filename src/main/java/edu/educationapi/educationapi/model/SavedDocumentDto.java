@@ -19,6 +19,5 @@ public class SavedDocumentDto {
 
     private byte[] data;
 
-    @JsonIgnore
     private Section section;
 }
