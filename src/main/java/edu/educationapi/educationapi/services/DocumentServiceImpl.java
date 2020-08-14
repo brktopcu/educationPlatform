@@ -3,7 +3,10 @@ package edu.educationapi.educationapi.services;
 import edu.educationapi.educationapi.domain.Document;
 import edu.educationapi.educationapi.domain.Video;
 import edu.educationapi.educationapi.mappers.DocumentMapper;
+import edu.educationapi.educationapi.mappers.SavedDocumentDtoMapper;
+import edu.educationapi.educationapi.mappers.SavedVideoDtoMapper;
 import edu.educationapi.educationapi.model.DocumentDto;
+import edu.educationapi.educationapi.model.SavedDocumentDto;
 import edu.educationapi.educationapi.model.VideoDto;
 import edu.educationapi.educationapi.repositories.DocumentRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +21,7 @@ public class DocumentServiceImpl implements DocumentService {
 
     private final DocumentRepository documentRepository;
     private final DocumentMapper documentMapper;
+    private final SavedDocumentDtoMapper savedDocumentDtoMapper;
 
     @Override
     public DocumentDto getById(Long documentId) {
@@ -42,8 +46,9 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public DocumentDto savedNewDocument(DocumentDto documentDto) {
-        return null;
+    public SavedDocumentDto savedNewDocument(SavedDocumentDto savedDocumentDto) {
+        documentRepository.save(savedDocumentDtoMapper.savedDocumentDtoToDocument(savedDocumentDto));
+        return savedDocumentDto;
     }
 
     @Override

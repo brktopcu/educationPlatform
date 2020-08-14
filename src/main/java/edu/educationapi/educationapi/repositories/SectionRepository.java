@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SectionRepository extends JpaRepository<Section, Long> {
 
-    //List<Section> findByCourseId(Long courseId);
+    Section findFirstBySectionNameAndAndSectionDescription(String sectionName, String sectionDescription);
 }

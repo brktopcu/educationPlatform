@@ -14,4 +14,6 @@ public interface SectionService {
     SavedSectionDto savedNewSession(SavedSectionDto savedSectionDto);
 
     SectionDto updateSession(Long sessionId, SectionDto sectionDto);
+
+    SectionDto findBySectionNameAndDescription(String sectionName, String sectionDescription);
 }

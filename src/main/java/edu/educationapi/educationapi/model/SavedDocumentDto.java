@@ -11,13 +11,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SavedVideoDto {
+public class SavedDocumentDto {
 
-    private String videoName;
+    private String documentName;
 
-    private String videoType;
+    private String documentType;
 
-    private byte[] videoData;
+    private byte[] data;
 
+    @JsonIgnore
     private Section section;
 }

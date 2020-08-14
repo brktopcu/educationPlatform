@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Base64;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -31,6 +32,23 @@ public class SectionController {
         sectionService.savedNewSession(savedSectionDto);
 
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getSection/{sectionName}/{sectionDescription}")
+    public ResponseEntity<SectionDto> getSectionsByNameAndDesc(
+            @PathVariable("sectionName") String sectionName,
+            @PathVariable("sectionDescription") String sectionDescription){
+
+        byte[] decodedNameBytes = Base64.getDecoder().decode(sectionName);
+        String decodedName = new String(decodedNameBytes);
+
+        byte[] decodedDescBytes = Base64.getDecoder().decode(sectionDescription);
+        String decodedDescription = new String(decodedDescBytes);
+
+
+        return new ResponseEntity<>(sectionService
+                .findBySectionNameAndDescription(decodedName,decodedDescription), HttpStatus.OK);
+
     }
 
 }

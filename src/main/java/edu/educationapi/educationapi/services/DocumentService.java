@@ -1,6 +1,7 @@
 package edu.educationapi.educationapi.services;
 
 import edu.educationapi.educationapi.model.DocumentDto;
+import edu.educationapi.educationapi.model.SavedDocumentDto;
 import edu.educationapi.educationapi.model.VideoDto;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface DocumentService {
 
     List<DocumentDto> getDocumentsBySectionId(Long sectionId);
 
-    DocumentDto savedNewDocument(DocumentDto documentDto);
+    SavedDocumentDto savedNewDocument(SavedDocumentDto savedDocumentDto);
 
     DocumentDto updateVideo(Long documentId, DocumentDto documentDto);
 }

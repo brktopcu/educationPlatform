@@ -53,4 +53,10 @@ public class SectionServiceImpl implements SectionService {
     public SectionDto updateSession(Long sessionId, SectionDto sectionDto) {
         return null;
     }
+
+    @Override
+    public SectionDto findBySectionNameAndDescription(String sectionName, String sectionDescription) {
+        return sectionMapper.sectionToSectionDto(sectionRepository
+                .findFirstBySectionNameAndAndSectionDescription(sectionName,sectionDescription));
+    }
 }
