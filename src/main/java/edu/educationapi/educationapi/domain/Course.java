@@ -43,4 +43,7 @@ public class Course {
     @JsonManagedReference
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Section> sectionList;
+
+    @OneToOne
+    private Progress progress;
 }

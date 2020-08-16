@@ -22,6 +22,7 @@ public class CourseLoader implements CommandLineRunner {
     private final CourseCategoryRepository courseCategoryRepository;
     private final VideoRepository videoRepository;
     private final DocumentRepository documentRepository;
+    private final ProgressRepository progressRepository;
 
     InputStream in1 = CourseLoader.class.getResourceAsStream("/videos/video-sample.mp4");
     InputStream in2 = CourseLoader.class.getResourceAsStream("/pictures/spring-boot.png");
@@ -102,6 +103,22 @@ public class CourseLoader implements CommandLineRunner {
         userRepository.save(u1);
         userRepository.save(u2);
 
+        Progress p1 = Progress.builder().progress((float) 0)
+                .course(c1)
+                .build();
+
+        Progress p2 = Progress.builder().progress((float) 0)
+                .course(c2)
+                .build();
+
+        Progress p3 = Progress.builder().progress((float) 0)
+                .course(c3)
+                .build();
+
+        progressRepository.save(p1);
+        progressRepository.save(p2);
+        progressRepository.save(p3);
+
 
         Section s1 = Section.builder().sectionName("Bölüm 1")
                 .sectionDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -154,7 +171,7 @@ public class CourseLoader implements CommandLineRunner {
         documentRepository.save(d1);
 
 
-        System.out.println("Courses Loaded!");
+        System.out.println("Data Loaded!");
     }
 
 }
