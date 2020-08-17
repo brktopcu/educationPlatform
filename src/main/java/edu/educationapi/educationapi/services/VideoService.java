@@ -14,4 +14,6 @@ public interface VideoService {
     SavedVideoDto savedNewVideo(SavedVideoDto savedVideoDto);
 
     VideoDto updateVideo(Long videoId, VideoDto videoDto);
+
+    void updateVideoCheckbox(Long videoId);
 }

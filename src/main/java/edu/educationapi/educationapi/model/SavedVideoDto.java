@@ -19,5 +19,7 @@ public class SavedVideoDto {
 
     private byte[] videoData;
 
+    private boolean checked;
+
     private Section section;
 }

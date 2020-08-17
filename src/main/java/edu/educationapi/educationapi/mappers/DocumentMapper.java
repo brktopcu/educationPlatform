@@ -1,9 +1,7 @@
 package edu.educationapi.educationapi.mappers;
 
 import edu.educationapi.educationapi.domain.Document;
-import edu.educationapi.educationapi.domain.Video;
 import edu.educationapi.educationapi.model.DocumentDto;
-import edu.educationapi.educationapi.model.VideoDto;
 import org.mapstruct.Mapper;
 
 @Mapper

@@ -19,5 +19,7 @@ public class SavedDocumentDto {
 
     private byte[] data;
 
+    private boolean checked;
+
     private Section section;
 }

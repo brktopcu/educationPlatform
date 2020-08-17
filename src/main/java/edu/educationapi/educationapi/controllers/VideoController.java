@@ -1,5 +1,6 @@
 package edu.educationapi.educationapi.controllers;
 
+import edu.educationapi.educationapi.model.ProgressDto;
 import edu.educationapi.educationapi.model.SavedSectionDto;
 import edu.educationapi.educationapi.model.SavedVideoDto;
 import edu.educationapi.educationapi.model.VideoDto;
@@ -30,5 +31,12 @@ public class VideoController {
         videoService.savedNewVideo(savedVideoDto);
 
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{videoId}")
+    public ResponseEntity handleCheckboxUpdate(@PathVariable("videoId") Long videoId){
+        videoService.updateVideoCheckbox(videoId);
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

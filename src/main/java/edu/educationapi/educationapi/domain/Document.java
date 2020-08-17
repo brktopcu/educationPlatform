@@ -25,6 +25,8 @@ public class Document {
     @Lob
     private byte[] data;
 
+    private boolean checked;
+
     @JsonBackReference
     @ManyToOne
     private Section section;

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -51,5 +52,13 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public VideoDto updateVideo(Long videoId, VideoDto videoDto) {
         return null;
+    }
+
+    @Override
+    public void updateVideoCheckbox(Long videoId) {
+
+        Optional<Video> video = videoRepository.findById(videoId);
+        video.ifPresent(video1 -> video1.setChecked(!video1.isChecked()));
+        videoRepository.save(video.get());
     }
 }

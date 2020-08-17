@@ -21,6 +21,8 @@ public class VideoDto {
 
     private byte[] videoData;
 
+    private boolean checked;
+
     @JsonIgnore
     private Section section;
 

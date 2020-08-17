@@ -151,12 +151,14 @@ public class CourseLoader implements CommandLineRunner {
                 .videoType("video/mp4")
                 .videoData(in6.readAllBytes())
                 .section(s1)
+                .checked(false)
                 .build();
 
         Video v2 = Video.builder().videoName("Demo")
                 .videoType("video/mp4")
                 .videoData(in1.readAllBytes())
                 .section(s2)
+                .checked(false)
                 .build();
 
         videoRepository.save(v1);
@@ -166,6 +168,7 @@ public class CourseLoader implements CommandLineRunner {
                 .documentType("pdf")
                 .data(in5.readAllBytes())
                 .section(s1)
+                .checked(false)
                 .build();
 
         documentRepository.save(d1);

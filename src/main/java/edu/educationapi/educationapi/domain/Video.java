@@ -22,6 +22,8 @@ public class Video {
 
     private String videoType;
 
+    private boolean checked;
+
     @Lob
     private byte[] videoData;
 

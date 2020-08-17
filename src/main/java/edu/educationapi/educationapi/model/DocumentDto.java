@@ -21,6 +21,8 @@ public class DocumentDto {
 
     private byte[] data;
 
+    private boolean checked;
+
     @JsonIgnore
     private Section section;
 }

@@ -33,4 +33,11 @@ public class DocumentController {
 
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
+    @PutMapping("/update/{documentId}")
+    public ResponseEntity handleCheckboxUpdate(@PathVariable("documentId") Long documentId){
+        documentService.updateDocumentCheckbox(documentId);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

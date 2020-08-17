@@ -14,4 +14,6 @@ public interface DocumentService {
     SavedDocumentDto savedNewDocument(SavedDocumentDto savedDocumentDto);
 
     DocumentDto updateVideo(Long documentId, DocumentDto documentDto);
+
+    void updateDocumentCheckbox(Long documentId);
 }

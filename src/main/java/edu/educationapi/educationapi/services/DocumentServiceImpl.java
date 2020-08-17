@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -54,5 +55,12 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public DocumentDto updateVideo(Long documentId, DocumentDto documentDto) {
         return null;
+    }
+
+    @Override
+    public void updateDocumentCheckbox(Long documentId) {
+        Optional<Document> document = documentRepository.findById(documentId);
+        document.ifPresent(document1 -> document1.setChecked(!document1.isChecked()));
+        documentRepository.save(document.get());
     }
 }
