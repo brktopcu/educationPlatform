@@ -3,8 +3,10 @@ package edu.educationapi.educationapi.controllers;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.educationapi.educationapi.mappers.SavedCourseDtoMapper;
 import edu.educationapi.educationapi.model.CourseDto;
+import edu.educationapi.educationapi.model.ProgressDto;
 import edu.educationapi.educationapi.model.SavedCourseDto;
 import edu.educationapi.educationapi.services.CourseService;
+import edu.educationapi.educationapi.services.ProgressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +22,7 @@ import java.util.List;
 public class CourseController {
 
     private final CourseService courseService;
+    private final ProgressService progressService;
 
     @GetMapping("/{courseId}")
     public ResponseEntity<CourseDto> getCourseById(@PathVariable("courseId") Long courseId) throws ChangeSetPersister.NotFoundException {
@@ -38,6 +41,13 @@ public class CourseController {
     public ResponseEntity handlePost(@RequestBody SavedCourseDto savedCourseDto){
 
         courseService.savedNewCourse(savedCourseDto);
+
+        ProgressDto progressDto = new ProgressDto();
+        progressDto.setCourse(courseService.findByCourseNameAndDesc(savedCourseDto.getCourseName(),
+                savedCourseDto.getCourseDescription()));
+        progressDto.setProgress(0);
+        progressService.savedNewProgress(progressDto);
+
 
         return new ResponseEntity(HttpStatus.CREATED);
     }

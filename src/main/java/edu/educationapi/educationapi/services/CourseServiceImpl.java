@@ -59,4 +59,10 @@ public class CourseServiceImpl implements CourseService {
     public void deleteByCourseId(Long courseId) {
         courseRepository.deleteById(courseId);
     }
+
+    @Override
+    public Course findByCourseNameAndDesc(String courseName, String courseDesc) {
+
+        return courseRepository.findFirstByCourseNameAndCourseDescription(courseName,courseDesc);
+    }
 }
